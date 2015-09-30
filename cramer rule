@@ -1,0 +1,21 @@
+function [ x ] = cramer( A,b )
+clc;
+tic
+A
+b
+[m n] = size(A);
+if m~=n
+  error('Matrix is not square.') 
+end
+if det(A)==0
+  error('Matrix is singular.')
+end
+for j=1:n
+  B=A
+  B(:,j)=b
+  x(j)=det(B)/det(A)
+end
+x=x';
+toc
+end
+
